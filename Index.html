@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Khushbu Patel, PhD — Research & Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f38; --navy-mid: #1a3154; --gold: #c9a84c; --gold-light: #e8c97a;
+    --cream: #f9f5ee; --warm-white: #fffdf8; --text: #1e1e1e; --muted: #6b6b6b; --border: #e0d9cc;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text); font-size: 16px; line-height: 1.6; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(255,253,248,0.93); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--navy); }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 5rem; }
+  .hero-left {
+    background: var(--navy); display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5rem 6rem 6rem; position: relative; overflow: hidden;
+  }
+  .hero-left::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.15) 0%,transparent 70%); }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 500; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,4vw,4rem); color: #fff; line-height: 1.1; margin-bottom: 0.3rem; }
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+  .hero-title { font-size: 1rem; color: rgba(255,255,255,.55); margin-bottom: 2.5rem; font-weight: 300; letter-spacing: 0.04em; }
+  .hero-tagline { font-size: 1.05rem; color: rgba(255,255,255,.82); line-height: 1.7; max-width: 380px; margin-bottom: 3rem; font-weight: 300; }
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 0.75rem 1.8rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; cursor: pointer; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline { border: 1px solid rgba(255,255,255,.35); color: rgba(255,255,255,.8); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-right { background: var(--cream); display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem; gap: 2.5rem; }
+  .stat-block { border-left: 2px solid var(--gold); padding-left: 1.5rem; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--navy); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+  section { padding: 6rem 6rem; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.8rem; }
+  .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem,3vw,2.8rem); color: var(--navy); line-height: 1.15; margin-bottom: 2.5rem; }
+  .about { background: var(--warm-white); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; }
+  .about-text p { color: #3d3d3d; margin-bottom: 1.2rem; font-weight: 300; font-size: 1.02rem; line-height: 1.8; }
+  .sidebar-card { background: var(--cream); border: 1px solid var(--border); padding: 2rem; margin-bottom: 1.5rem; }
+  .sidebar-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 1rem; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { font-size: 0.78rem; background: #fff; border: 1px solid var(--border); color: var(--navy-mid); padding: 0.3rem 0.75rem; border-radius: 2px; font-weight: 400; }
+  .experience { background: var(--navy); }
+  .experience .section-heading { color: #fff; }
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(255,255,255,.08); align-items: start; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date { font-size: 0.8rem; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; padding-top: 0.2rem; }
+  .exp-org { font-size: 0.78rem; color: rgba(255,255,255,.4); margin-top: 0.3rem; font-style: italic; }
+  .exp-role { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 0.9rem; color: rgba(255,255,255,.65); padding: 0.3rem 0 0.3rem 1.2rem; position: relative; font-weight: 300; line-height: 1.65; }
+  .exp-bullets li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:0.8rem; }
+  .skills { background: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .skill-card { background: var(--warm-white); border: 1px solid var(--border); padding: 2rem; position: relative; transition: transform .2s, box-shadow .2s; }
+  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,.07); }
+  .skill-card-num { font-family:'Playfair Display',serif; font-size:2.5rem; color:var(--border); position:absolute; top:1.2rem; right:1.5rem; line-height:1; }
+  .skill-card h4 { font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:500; }
+  .skill-card ul { list-style:none; }
+  .skill-card ul li { font-size:0.88rem; color:var(--text); padding:0.25rem 0; border-bottom:1px solid var(--border); font-weight:300; }
+  .skill-card ul li:last-child { border-bottom:none; }
+  .education { background: var(--warm-white); }
+  .edu-list { display:flex; flex-direction:column; gap:1.5rem; max-width:800px; }
+  .edu-item { display:grid; grid-template-columns:120px 1fr; gap:2rem; align-items:start; padding-bottom:1.5rem; border-bottom:1px solid var(--border); }
+  .edu-item:last-child { border-bottom:none; }
+  .edu-year { font-size:0.82rem; color:var(--gold); font-weight:500; padding-top:0.2rem; }
+  .edu-degree { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--navy); margin-bottom:0.3rem; }
+  .edu-school { font-size:0.85rem; color:var(--muted); font-weight:300; }
+  .edu-note { font-size:0.8rem; color:var(--gold); font-weight:500; margin-top:0.3rem; }
+  .awards { background:var(--navy); padding:4rem 6rem; }
+  .awards .section-heading { color:#fff; margin-bottom:2rem; }
+  .award-row { display:flex; flex-wrap:wrap; gap:1rem; }
+  .award-pill { background:rgba(255,255,255,.06); border:1px solid rgba(201,168,76,.3); color:rgba(255,255,255,.8); font-size:0.82rem; padding:0.6rem 1.2rem; border-radius:2px; font-weight:300; }
+  .contact { background:var(--cream); text-align:center; padding:6rem; }
+  .contact .section-heading { margin-bottom:1rem; }
+  .contact p { color:var(--muted); font-size:1rem; margin-bottom:2.5rem; font-weight:300; }
+  .contact-links { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+  .contact-link { display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color:var(--navy); font-size:0.85rem; font-weight:500; letter-spacing:0.06em; padding:0.7rem 1.5rem; border:1px solid var(--border); background:#fff; transition:all .2s; }
+  .contact-link:hover { border-color:var(--gold); color:var(--gold); }
+  footer { background:var(--navy); color:rgba(255,255,255,.4); text-align:center; padding:1.5rem; font-size:0.78rem; letter-spacing:0.06em; }
+  .fade-in { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+  .fade-in.visible { opacity:1; transform:none; }
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem;} .nav-links{gap:1.5rem;}
+    .hero{grid-template-columns:1fr;} .hero-left{padding:5rem 2rem 3rem;}
+    .hero-right{flex-direction:row;flex-wrap:wrap;padding:3rem 2rem;gap:2rem;}
+    .about-grid{grid-template-columns:1fr;gap:3rem;}
+    .skills-grid{grid-template-columns:1fr 1fr;}
+    section{padding:4rem 2rem;}
+    .exp-item{grid-template-columns:1fr;gap:0.5rem;}
+    .edu-item{grid-template-columns:1fr;gap:0.3rem;}
+    .awards{padding:3rem 2rem;} .contact{padding:4rem 2rem;}
+  }
+  @media(max-width:600px){.skills-grid{grid-template-columns:1fr;}.hero-name{font-size:2.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Khushbu Patel, PhD</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Research Coordinator &amp; Strategist</p>
+    <h1 class="hero-name">Khushbu<br><em>Patel</em></h1>
+    <p class="hero-title">PhD — Brain, Behaviour &amp; Cognition</p>
+    <p class="hero-tagline">PhD-trained researcher who turns complex, multi-site data into clear strategy and measurable outcomes — across academia, tech, and industry.</p>
+    <div class="hero-cta-group">
+      <a href="#experience" class="btn btn-gold">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-block fade-in"><div class="stat-number">8+</div><div class="stat-label">Years in research &amp; coordination</div></div>
+    <div class="stat-block fade-in"><div class="stat-number">7</div><div class="stat-label">Peer-reviewed publications</div></div>
+    <div class="stat-block fade-in"><div class="stat-number">120+</div><div class="stat-label">Research participants managed</div></div>
+    <div class="stat-block fade-in"><div class="stat-number">4.0</div><div class="stat-label">CGPA — NSERC CGS-D3 Fellow</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p class="section-label">About</p>
+      <h2 class="section-heading">Research that<br>drives real impact</h2>
+      <p>I'm a PhD-trained research coordinator with over eight years of experience designing and executing multi-site research projects across academic and industry settings. My work sits at the intersection of cognitive science, data strategy, and human-centred research.</p>
+      <p>From collaborating with teams at NYU, the University of Melbourne, Meta, and Qualcomm, to leading A/B testing initiatives at Loblaw Digital, I bring rigorous methodology and practical execution to every project.</p>
+      <p>I specialize in translating complex data into actionable insights — through statistical modelling, training program design, and stakeholder reporting.</p>
+      <a href="https://www.linkedin.com/in/khushbuypatel" target="_blank" class="btn btn-gold" style="margin-top:1rem;">LinkedIn Profile →</a>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-card">
+        <h4>Research Methods</h4>
+        <div class="tag-list">
+          <span class="tag">Protocol Development</span><span class="tag">Experimental Design</span>
+          <span class="tag">Bayesian A/B Testing</span><span class="tag">Statistical Modelling</span>
+          <span class="tag">Qualitative Research</span><span class="tag">Literature Appraisal</span>
+          <span class="tag">Ethics Compliance</span>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h4>Technical Tools</h4>
+        <div class="tag-list">
+          <span class="tag">R</span><span class="tag">Python</span><span class="tag">MATLAB</span>
+          <span class="tag">REDCap</span><span class="tag">MS Office</span><span class="tag">WordPress</span>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h4>Location</h4>
+        <div class="tag-list"><span class="tag">Oakville, ON</span><span class="tag">Open to Opportunities</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-heading">Where I've done<br><em style="font-style:italic;color:var(--gold-light)">my best work</em></h2>
+  <div>
+    <div class="exp-item fade-in">
+      <div><div class="exp-date">2018 – 2025</div><div class="exp-org">York University &amp;<br>Centre for Vision Research</div></div>
+      <div>
+        <div class="exp-role">Graduate Researcher &amp; Research Coordinator</div>
+        <ul class="exp-bullets">
+          <li>Implemented and reported on concurrent research projects; developed protocols ensuring ethics compliance</li>
+          <li>Managed data collection, verification, and analysis across 120+ participants using R, MATLAB, and Python</li>
+          <li>Coordinated multi-site collaborations with NYU, University of Melbourne, Meta, and Qualcomm</li>
+          <li>Delivered training on statistical methods and experimental design to graduate and undergraduate personnel</li>
+          <li>Contributed to 7 peer-reviewed publications, funding proposals, and conference abstracts</li>
+          <li>Implemented and reconciled research budgets across NSERC-funded grants</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item fade-in">
+      <div><div class="exp-date">Jan – Aug 2022</div><div class="exp-org">Loblaw Digital</div></div>
+      <div>
+        <div class="exp-role">Associate Product Manager, Experimentation &amp; Personalization</div>
+        <ul class="exp-bullets">
+          <li>Coordinated research activities across 11 business lines; developed KPI frameworks and financial projections</li>
+          <li>Trained 23 personnel in experimental design, Bayesian A/B testing, and data interpretation</li>
+          <li>Led behavioural experiments resulting in 20% reduction in operational processing times</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item fade-in">
+      <div><div class="exp-date">2014 – 2020</div><div class="exp-org">CVR Summer School,<br>York University</div></div>
+      <div>
+        <div class="exp-role">Administrative Coordinator &amp; Peer Mentor</div>
+        <ul class="exp-bullets">
+          <li>Coordinated logistics, scheduling, and communications for annual program with 100+ applicants</li>
+          <li>Delivered technical training and career mentorship; organized seminars and workshops</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <p class="section-label">Skills</p>
+  <h2 class="section-heading">Core competencies</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in"><span class="skill-card-num">01</span><h4>Research Coordination</h4><ul><li>Multi-site project management</li><li>Protocol &amp; study document development</li><li>Ethics compliance</li><li>Participant recruitment &amp; interviews</li><li>Literature search &amp; appraisal</li></ul></div>
+    <div class="skill-card fade-in"><span class="skill-card-num">02</span><h4>Data &amp; Analysis</h4><ul><li>Database design</li><li>Statistical modelling</li><li>Data collection &amp; verification</li><li>R, MATLAB, Python</li><li>REDCap (familiar)</li></ul></div>
+    <div class="skill-card fade-in"><span class="skill-card-num">03</span><h4>Communication &amp; Training</h4><ul><li>Training session development</li><li>Scientific writing</li><li>Stakeholder engagement</li><li>Conference presentations</li><li>Progress reporting</li></ul></div>
+    <div class="skill-card fade-in"><span class="skill-card-num">04</span><h4>Administration</h4><ul><li>Budget implementation</li><li>Financial projections</li><li>MS Office suite</li><li>WordPress</li><li>Cross-functional coordination</li></ul></div>
+    <div class="skill-card fade-in"><span class="skill-card-num">05</span><h4>Industry Domains</h4><ul><li>Cognitive &amp; vision science</li><li>UX &amp; product experimentation</li><li>AR/technology research</li><li>Academic &amp; clinical research</li><li>Education &amp; training design</li></ul></div>
+    <div class="skill-card fade-in"><span class="skill-card-num">06</span><h4>Collaboration</h4><ul><li>Multi-institutional teams</li><li>Industry partnerships (Meta, Qualcomm)</li><li>International collaborations</li><li>Cross-disciplinary stakeholders</li><li>Mentorship &amp; team development</li></ul></div>
+  </div>
+</section>
+
+<section class="education">
+  <p class="section-label">Education</p>
+  <h2 class="section-heading">Academic background</h2>
+  <div class="edu-list">
+    <div class="edu-item fade-in"><div class="edu-year">2024</div><div><div class="edu-degree">PhD, Psychology (Brain, Behaviour &amp; Cognition)</div><div class="edu-school">York University</div><div class="edu-note">cGPA 4.0 / 4.0 · NSERC CGS-D3 Fellow</div></div></div>
+    <div class="edu-item fade-in"><div class="edu-year">2018</div><div><div class="edu-degree">MA, Psychology &amp; Neuroscience Graduate Diploma</div><div class="edu-school">York University</div></div></div>
+    <div class="edu-item fade-in"><div class="edu-year">2016</div><div><div class="edu-degree">BSc Honours, Psychology</div><div class="edu-school">York University</div><div class="edu-note">Summa Cum Laude</div></div></div>
+  </div>
+</section>
+
+<section class="awards">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-heading">Awards &amp; honours</h2>
+  <div class="award-row">
+    <span class="award-pill">NSERC CGS-D3 Doctoral Fellowship ($35,000/yr × 3)</span>
+    <span class="award-pill">Best Student Paper — Color &amp; Imaging Conference 2024</span>
+    <span class="award-pill">Queen Elizabeth II Graduate Scholarship</span>
+    <span class="award-pill">NSERC CGS-M</span>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-heading">Let's work together</h2>
+  <p>Open to research, coordination, and strategy roles. Feel free to reach out.</p>
+  <div class="contact-links">
+    <a href="mailto:Khushbuypatel1234@gmail.com" class="contact-link">✉ Email</a>
+    <a href="https://www.linkedin.com/in/khushbuypatel" target="_blank" class="contact-link">in LinkedIn</a>
+    <a href="tel:6477656843" class="contact-link">☎ (647) 765-6843</a>
+  </div>
+</section>
+
+<footer>© 2025 Khushbu Patel · Built with purpose</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
