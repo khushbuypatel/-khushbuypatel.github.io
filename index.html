@@ -97,6 +97,17 @@ section{padding:5rem;}
 .case-body p{font-size:0.92rem;color:#3d3d3d;font-weight:300;line-height:1.8;}
 .case-skills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
 .case-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:2px;margin-top:1rem;transition:border-color 0.2s;}
+.cs-process-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:0.8rem 0 0.4rem;}
+.cs-process-item{background:var(--cream);border:1px solid var(--border);padding:1.1rem 1.2rem;border-radius:2px;}
+.cs-process-item strong{display:block;font-size:0.8rem;font-weight:500;color:var(--navy);margin-bottom:0.5rem;letter-spacing:0.02em;}
+.cs-process-item p{font-size:0.82rem;color:var(--muted);line-height:1.65;margin:0;}
+.cs-findings-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin:0.6rem 0 0.4rem;}
+.cs-findings-list li{display:flex;gap:0.9rem;align-items:flex-start;font-size:0.92rem;color:#3d3d3d;font-weight:300;line-height:1.7;}
+.cs-findings-list li::before{content:"→";color:var(--gold);font-size:0.8rem;flex-shrink:0;margin-top:0.25rem;}
+.cs-connector{display:flex;align-items:center;gap:1rem;padding:0 0.5rem;opacity:0.45;margin:0.2rem 0;}
+.cs-connector-line{flex:1;height:1px;background:var(--gold);}
+.cs-connector-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;white-space:nowrap;}
+@media(max-width:700px){.cs-process-grid{grid-template-columns:1fr;}.cs-connector-label{display:none;}}
 .case-link:hover{border-color:var(--gold);}
 
 /* EXPERIENCE & EDUCATION */
@@ -353,98 +364,266 @@ footer{background:#080f1c;color:rgba(255,255,255,.3);text-align:center;padding:1
 <!-- 4. RESEARCH -->
 <section class="research" id="research">
   <p class="section-label">Research</p>
-  <h2 class="section-heading">Case studies</h2>
+  <h2 class="section-heading">Can Digital Environments Ever Truly Feel Real?</h2>
+  <p style="color:#3d3d3d;font-weight:300;font-size:1rem;line-height:1.8;max-width:660px;margin-bottom:2.5rem;">A decade of research into human perception, display technology, and what it actually takes for a screen — or a virtual world — to be seen the way the real world is. Four studies, one through-line.</p>
+
   <div class="case-list">
 
+    <!-- ══ STUDY 01 ══ -->
     <div class="case-item fade-in">
       <div class="case-header" onclick="toggleCase(this)">
         <div class="case-header-left">
-          <div class="case-role">Lead Researcher</div>
-          <div class="case-title">Understanding Visual Perception in Virtual Reality</div>
+          <div class="case-role">Study 01 — The Baseline · Lead Researcher · Journal of Vision, 2018</div>
+          <div class="case-title">How Do People Actually Judge the Shade of a Surface?</div>
         </div>
         <div class="case-toggle">+</div>
       </div>
       <div class="case-body">
-        <div class="case-methods"><span class="method-tag">Virtual Reality</span><span class="method-tag">Experimental Design</span><span class="method-tag">Psychophysics</span><span class="method-tag">Data Analysis</span><span class="method-tag">Computational Modeling</span></div>
-        <h4>Overview</h4>
-        <p>This project explored lightness constancy &mdash; our ability to recognise the true appearance of a surface despite changes in lighting &mdash; and whether more realistic VR environments improve perceptual accuracy.</p>
-        <h4>Approach</h4>
-        <p>I designed VR experiments in custom Unity environments, manipulating surface orientation, lighting direction, material properties, shadows, and environmental context. Participants completed perceptual matching tasks analysed using computational models.</p>
-        <h4>Key Findings</h4>
-        <p>Realistic visual cues improved surface judgments, but performance in even highly detailed VR remained substantially below real-world levels, suggesting perception in VR differs from physical environments in ways not yet fully understood.</p>
-        <h4>Impact</h4>
-        <p>Findings have implications for VR design in training, simulation, education, and healthcare where visual realism is critical.</p>
-        <div class="case-skills"><span class="method-tag">Unity</span><span class="method-tag">Human Factors</span><span class="method-tag">Statistical Modeling</span><span class="method-tag">Visual Perception</span><span class="method-tag">Scientific Communication</span></div>
-        <a href="https://www.yorku.ca/rfm/pub/2024cic1.pdf" target="_blank" class="case-link">Read the paper &#8599;</a>
+        <div class="case-methods">
+          <span class="method-tag">User Study Design</span>
+          <span class="method-tag">Perception Research</span>
+          <span class="method-tag">Quantitative Methods</span>
+          <span class="method-tag">Mixed Methods</span>
+          <span class="method-tag">MATLAB</span>
+        </div>
+
+        <h4>Problem</h4>
+        <p>Before we can ask whether a screen or VR headset accurately represents the world, we need to understand how human perception works in the first place. We're surprisingly good at knowing what colour something is, even when the lighting changes — but how exactly does the brain do that? One influential theory claimed people don't genuinely perceive colour at all — they just pattern-match. If true, that would have big implications for how we evaluate displays.</p>
+
+        <h4>Process</h4>
+        <div class="cs-process-grid">
+          <div class="cs-process-item">
+            <strong>Physical Experiment</strong>
+            <p>A motor-driven apparatus displayed real paper patches under controlled lighting. Participants used keyboard controls to adjust both shade and brightness of a match across 120 trials.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Digital Replication</strong>
+            <p>The exact same task was recreated as a photorealistic 3D render on a calibrated screen — directly comparing performance with a physical surface versus a digital one.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Measuring Accuracy</strong>
+            <p>A perceptual accuracy score tracked how close each participant's matches were to the true colour: 1.0 = perfect, 0 = matching brightness only.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Participant Feedback</strong>
+            <p>After each session, participants shared how easy or difficult the task felt — adding a qualitative layer to the quantitative results.</p>
+          </div>
+        </div>
+
+        <h4>Results &amp; Impact</h4>
+        <ul class="cs-findings-list">
+          <li>People can accurately identify a surface's shade independent of lighting — establishing the bar any digital display needs to clear.</li>
+          <li>Participants performed <em>better</em> on the digital version — revealing that screen glow can distort colour perception in ways that look like accuracy, a warning sign for display research.</li>
+          <li>Published in Journal of Vision (2018), contributing a novel experimental method used in all subsequent studies.</li>
+        </ul>
+
+        <div class="case-skills">
+          <span class="method-tag">Experimental Design</span>
+          <span class="method-tag">Psychophysics</span>
+          <span class="method-tag">Statistical Modeling</span>
+          <span class="method-tag">Scientific Communication</span>
+        </div>
+        <a href="https://yorkspace.library.yorku.ca/server/api/core/bitstreams/6d9d1b01-f366-422c-99bc-8118f1811493/content" target="_blank" class="case-link">Read the thesis (Chapter 2) &#8599;</a>
       </div>
     </div>
 
-    <div class="case-item fade-in">
-      <div class="case-header" onclick="toggleCase(this)">
-        <div class="case-header-left">
-          <div class="case-role">Researcher</div>
-          <div class="case-title">Understanding How People Make Decisions Under Uncertainty</div>
-        </div>
-        <div class="case-toggle">+</div>
-      </div>
-      <div class="case-body">
-        <div class="case-methods"><span class="method-tag">Computational Modeling</span><span class="method-tag">Psychophysics</span><span class="method-tag">Statistical Analysis</span><span class="method-tag">Human Decision-Making</span></div>
-        <h4>Overview</h4>
-        <p>This project investigated how people make perceptual decisions when there is no perfectly certain answer, and whether they always choose the most likely option or distribute choices according to perceived probabilities.</p>
-        <h4>Approach</h4>
-        <p>Using computational models and behavioural experiments, we compared theories of perceptual decision-making. Participants completed visual tasks under uncertain conditions, and responses were compared to predictions from competing models.</p>
-        <h4>Key Findings</h4>
-        <p>Experienced observers were more consistent and efficient than probability-matching theories predict, suggesting human perception often operates closer to an optimal decision-making strategy.</p>
-        <h4>Impact</h4>
-        <p>Findings have implications for psychology, neuroscience, AI, and any system relying on human judgment under uncertainty.</p>
-        <div class="case-skills"><span class="method-tag">Decision Science</span><span class="method-tag">Behavioural Research</span><span class="method-tag">Statistical Analysis</span></div>
-        <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004342" target="_blank" class="case-link">Read the published paper &#8599;</a>
-      </div>
+    <!-- connector -->
+    <div class="cs-connector fade-in" aria-hidden="true">
+      <div class="cs-connector-line"></div>
+      <div class="cs-connector-label">Now that we know how humans see — can a screen fool them?</div>
+      <div class="cs-connector-line"></div>
     </div>
 
+    <!-- ══ STUDY 02 ══ -->
     <div class="case-item fade-in">
       <div class="case-header" onclick="toggleCase(this)">
         <div class="case-header-left">
-          <div class="case-role">Lead Researcher</div>
-          <div class="case-title">Making Digital Surfaces Look Real</div>
+          <div class="case-role">Study 02 — The Screen Problem · Lead Researcher · VSS / ECVP 2017</div>
+          <div class="case-title">What Makes a Screen Look Like a Screen?</div>
         </div>
         <div class="case-toggle">+</div>
       </div>
       <div class="case-body">
-        <div class="case-methods"><span class="method-tag">Perception Research</span><span class="method-tag">Experimental Design</span><span class="method-tag">Psychophysics</span><span class="method-tag">Display Technology</span><span class="method-tag">Human Factors</span></div>
-        <h4>Overview</h4>
-        <p>This project investigated which visual cues help people distinguish physical surfaces from digital ones, and whether adjusting those cues can make a display resemble a physical material like paper.</p>
-        <h4>Approach</h4>
-        <p>I conducted experiments comparing physical paper samples with digital versions on an LCD screen, manipulating colour consistency and surface texture cues under different conditions.</p>
-        <h4>Key Findings</h4>
-        <p>Colour was the strongest cue. Matching the display&apos;s chromaticity to surrounding lighting made digital surfaces substantially more realistic. Physical textures outperformed digitally simulated ones.</p>
-        <h4>Impact</h4>
-        <p>Provides practical guidance for creating convincing digital displays and established the foundation for later VR perception research.</p>
-        <div class="case-skills"><span class="method-tag">Visual Display Research</span><span class="method-tag">Human Perception</span><span class="method-tag">Statistical Analysis</span></div>
+        <div class="case-methods">
+          <span class="method-tag">Iterative User Testing</span>
+          <span class="method-tag">Display Perception</span>
+          <span class="method-tag">Visual Fidelity</span>
+          <span class="method-tag">Colorimetry</span>
+          <span class="method-tag">Human Factors</span>
+        </div>
+
+        <h4>Problem</h4>
+        <p>Screens look like screens — even when they're trying not to. Something always gives them away. For applications where a digital surface needs to blend into a physical scene (mixed reality, digital reading, research displays), that's a real design problem. The question was: what exactly is the giveaway?</p>
+
+        <h4>Process</h4>
+        <div class="cs-process-grid">
+          <div class="cs-process-item">
+            <strong>Round 1 — Colour &amp; Texture</strong>
+            <p>Participants viewed a grid of nine patches — eight real paper, one on-screen — and tried to spot the odd one out. Tested colour adjustment and digital texture independently and combined.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Round 2 — Who Adapts to Whom?</strong>
+            <p>Compared adjusting the screen to match the room versus adjusting room lighting to match the screen. Introduced a physical paper overlay as a texture alternative.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Round 3 — Physical Texture Under Real Lighting</strong>
+            <p>Retested the physical overlay under standard overhead lighting to isolate whether lighting direction — not just texture — was affecting perceived realism.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Iterative Refinement</strong>
+            <p>Each round fed directly into the next — a process mirroring iterative UX prototyping, narrowing from a broad factorial design to targeted tests.</p>
+          </div>
+        </div>
+
+        <h4>Results &amp; Impact</h4>
+        <ul class="cs-findings-list">
+          <li>Colour mismatch is the primary giveaway — without it, participants identified the screen over 80% of the time. With colour matching, accuracy dropped to near chance.</li>
+          <li>It doesn't matter which side adapts — matching the screen to the room and vice versa produce equivalent results, giving designers flexibility.</li>
+          <li>A real paper overlay outperformed digitally simulated texture — because real textures respond to real lighting, digital ones don't.</li>
+          <li>Lighting direction mattered more than expected: the angle of room light affects both real and digital surfaces, and neglecting it undermines calibration.</li>
+        </ul>
+
+        <div class="case-skills">
+          <span class="method-tag">Experimental Design</span>
+          <span class="method-tag">Display Technology</span>
+          <span class="method-tag">Statistical Analysis</span>
+          <span class="method-tag">Visual Perception</span>
+        </div>
         <a href="https://yorkspace.library.yorku.ca/server/api/core/bitstreams/6d9d1b01-f366-422c-99bc-8118f1811493/content" target="_blank" class="case-link">Read the thesis (Chapter 3) &#8599;</a>
       </div>
     </div>
 
+    <!-- connector -->
+    <div class="cs-connector fade-in" aria-hidden="true">
+      <div class="cs-connector-line"></div>
+      <div class="cs-connector-label">Flat screens solved. Does VR do better?</div>
+      <div class="cs-connector-line"></div>
+    </div>
+
+    <!-- ══ STUDY 03 ══ -->
     <div class="case-item fade-in">
       <div class="case-header" onclick="toggleCase(this)">
         <div class="case-header-left">
-          <div class="case-role">Lead Researcher</div>
-          <div class="case-title">Bridging Real and Virtual Perception</div>
+          <div class="case-role">Study 03 — VR's Promise · Lead Researcher · Behavior Research Methods, 2024</div>
+          <div class="case-title">Does VR See Colour the Way We Do?</div>
         </div>
         <div class="case-toggle">+</div>
       </div>
       <div class="case-body">
-        <div class="case-methods"><span class="method-tag">Lightness Perception</span><span class="method-tag">Display Calibration</span><span class="method-tag">Psychophysics</span><span class="method-tag">Experimental Design</span><span class="method-tag">Human Factors</span></div>
-        <h4>Overview</h4>
-        <p>Building on earlier display research, this project investigated whether carefully calibrated digital displays could produce lightness perception equivalent to physical paper surfaces.</p>
-        <h4>Approach</h4>
-        <p>Participants completed lightness-matching tasks comparing real paper with LCD-displayed patches. I manipulated colour calibration, texture cues, and physical vs. digital presentation to isolate the critical factors.</p>
-        <h4>Key Findings</h4>
-        <p>Colour calibration was decisive. When chromaticity matched the surrounding environment, lightness judgments closely resembled those with physical surfaces.</p>
-        <h4>Impact</h4>
-        <p>Provides a practical framework for researchers and designers creating virtual environments that support realistic visual judgments.</p>
-        <div class="case-skills"><span class="method-tag">Display Calibration</span><span class="method-tag">Visual Perception</span><span class="method-tag">Research Methods</span><span class="method-tag">Data Analysis</span></div>
-        <a href="https://yorkspace.library.yorku.ca/server/api/core/bitstreams/6d9d1b01-f366-422c-99bc-8118f1811493/content" target="_blank" class="case-link">Read the thesis (Chapter 4) &#8599;</a>
+        <div class="case-methods">
+          <span class="method-tag">VR User Research</span>
+          <span class="method-tag">Comparative Testing</span>
+          <span class="method-tag">Within-Subjects Design</span>
+          <span class="method-tag">Display Evaluation</span>
+          <span class="method-tag">Unity</span>
+        </div>
+
+        <h4>Problem</h4>
+        <p>VR headsets were being used in high-stakes settings — medical training, vision therapy, scientific research — where what users see in a virtual environment needs to closely match the real world. But one question hadn't been cleanly answered: is VR actually perceptually equivalent to reality? Without a controlled, within-participants comparison, any confidence in VR's accuracy was an assumption, not a finding.</p>
+
+        <h4>Process</h4>
+        <div class="cs-process-grid">
+          <div class="cs-process-item">
+            <strong>Physical Baseline</strong>
+            <p>A real room with a physical apparatus, real paper patches, and LED &amp; projector lighting — motor-controlled discs with precise shade control.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>VR Replica</strong>
+            <p>A digital replica of the same room built in Unity, displayed through an Oculus Rift S. Participants used hand controllers to complete the matching task.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Flat-Panel Display</strong>
+            <p>The same rendered scene on a standard LCD monitor in a dark room — bridging the physical and VR conditions and replicating a typical lab screen setup.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Cross-Environment Calibration</strong>
+            <p>Both VR and monitor were precisely calibrated so displayed brightness matched intended values. Lighting ratios and stimulus dimensions were matched across all three conditions.</p>
+          </div>
+        </div>
+
+        <h4>Results &amp; Impact</h4>
+        <ul class="cs-findings-list">
+          <li>VR matched real-world colour perception well on average — supporting its use as an alternative to physical setups for straightforward perceptual tasks.</li>
+          <li>Flat-panel displays produced slightly but significantly weaker performance than the physical room — standard screen-based research introduces subtle perceptual bias.</li>
+          <li>Both virtual environments showed much higher variability between individuals than the physical room — group averages in VR studies can mask dramatically different individual experiences.</li>
+          <li>Published in Behavior Research Methods (2024) as the first within-participants comparison of its kind.</li>
+        </ul>
+
+        <div class="case-skills">
+          <span class="method-tag">Virtual Reality</span>
+          <span class="method-tag">Psychophysics</span>
+          <span class="method-tag">Human Factors</span>
+          <span class="method-tag">Data Analysis</span>
+          <span class="method-tag">Scientific Communication</span>
+        </div>
+        <a href="https://www.yorku.ca/rfm/pub/2024brm.pdf" target="_blank" class="case-link">Read the paper &#8599;</a>
+      </div>
+    </div>
+
+    <!-- connector -->
+    <div class="cs-connector fade-in" aria-hidden="true">
+      <div class="cs-connector-line"></div>
+      <div class="cs-connector-label">Simple tasks: promising. But what about complex, real-world conditions?</div>
+      <div class="cs-connector-line"></div>
+    </div>
+
+    <!-- ══ STUDY 04 ══ -->
+    <div class="case-item fade-in">
+      <div class="case-header" onclick="toggleCase(this)">
+        <div class="case-header-left">
+          <div class="case-role">Study 04 — VR's Limits · Lead Researcher · Color and Imaging Conference</div>
+          <div class="case-title">More Realistic VR, Same Problem</div>
+        </div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="case-methods">
+          <span class="method-tag">High-Fidelity VR</span>
+          <span class="method-tag">Rendering Evaluation</span>
+          <span class="method-tag">Material Perception</span>
+          <span class="method-tag">Unity HDRP</span>
+          <span class="method-tag">User Research</span>
+        </div>
+
+        <h4>Problem</h4>
+        <p>Study 03 showed VR works well for simple tasks — but real-world scenes are rarely simple. When participants judge surfaces tilted at different angles under directional lighting, VR performance dropped sharply in earlier research. One likely explanation: those VR scenes used simplified, mostly grey surfaces. So the question became: if we build a genuinely high-quality, photorealistic VR environment, does performance improve? Does better graphics close the gap?</p>
+
+        <h4>Process</h4>
+        <div class="cs-process-grid">
+          <div class="cs-process-item">
+            <strong>High-Definition Scene</strong>
+            <p>Participants matched the shade of a tilted surface in a fully detailed VR environment — varied materials, realistic shadows, a rich surrounding scene designed to provide useful lighting cues.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Stripped-Back Control</strong>
+            <p>A second condition showed only the reference patch and match panel against a plain background — establishing a baseline for performance with minimal visual information.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Orientation Perception Check</strong>
+            <p>Participants indicated how they perceived the tilt of the reference surface — testing whether misreading the surface angle, rather than VR itself, was causing errors.</p>
+          </div>
+          <div class="cs-process-item">
+            <strong>Higher-Resolution Headset</strong>
+            <p>Used a Meta Quest Pro with higher resolution and wider field of view than prior studies, calibrated for brightness accuracy. Fresh participants recruited per condition.</p>
+          </div>
+        </div>
+
+        <h4>Results &amp; Impact</h4>
+        <ul class="cs-findings-list">
+          <li>Richer scenes helped at the margins — participants extracted more information from detailed environments than bare ones — but the accuracy gap with the real world persisted regardless of graphical quality.</li>
+          <li>The perceptual gap between VR and physical environments is not solvable purely through better graphics. This points to something deeper: subtle cues the visual system relies on that VR hasn't yet captured.</li>
+          <li>Participants estimated surface tilt consistently across all conditions, ruling out orientation misperception as the explanation — the failure is in colour processing specifically.</li>
+          <li>These findings reframe the problem: improving perceptual realism in VR likely requires advances in luminance range, pixel density, and the physical properties of real materials — not just polygon count.</li>
+        </ul>
+
+        <div class="case-skills">
+          <span class="method-tag">Virtual Reality</span>
+          <span class="method-tag">Rendering &amp; Visual Fidelity</span>
+          <span class="method-tag">Human Factors</span>
+          <span class="method-tag">Psychophysics</span>
+          <span class="method-tag">Data Analysis</span>
+        </div>
+        <a href="https://www.yorku.ca/rfm/pub/2024cic1.pdf" target="_blank" class="case-link">Read the paper &#8599;</a>
       </div>
     </div>
 
